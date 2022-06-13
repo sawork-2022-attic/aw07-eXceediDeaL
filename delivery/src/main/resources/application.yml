@@ -1,0 +1,25 @@
+server:
+  port: 10900
+project:
+  version: "0.0.1"
+spring:
+  application:
+    name: "delivery"
+  data:
+    mongodb:
+      database: "micropos"
+      host: "localhost"
+      port: 10500
+  cloud:
+    nacos.discovery.server-addr: "http://localhost:10400"
+    bus:
+      id: ${spring.application.name}:${server.port}
+  rabbitmq:
+    host: localhost
+    port: 10510
+    username: "guest"
+    password: "guest"
+
+springdoc:
+  swagger-ui:
+    use-root-path: true

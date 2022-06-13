@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  db:
+    image: mongo:5
+    ports:
+      - "10500:27017"
+  mq:
+    image: rabbitmq:3-management
+    ports:
+      - "10510:5672"
+      - "10511:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+  discovery:
+    image: nacos/nacos-server:v2.1.0
+    container_name: nacos-standalone
+    environment:
+    - PREFER_HOST_MODE=hostname
+    - MODE=standalone
+    ports:
+    - "10400:8848"
+    - "10401:9848"
